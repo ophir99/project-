@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-
+import { MatDialog } from '@angular/material';
+import { UserIComponent } from "./user-i/user-i.component";
+import { UserService } from './user.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,7 +12,9 @@ import { Title } from '@angular/platform-browser';
 export class AppComponent {
   title = 'project-one';
   constructor(
-    private router: Router
+    private router: Router,
+    private matD: MatDialog,
+    private userS: UserService
   ){
 
   }
@@ -22,5 +26,26 @@ export class AppComponent {
         location: "IND"
       }})
     }
+  }
+
+
+  showDialog(){
+    this.matD.open(UserIComponent, {
+      disableClose: true,
+      data: {
+        name: this.title,
+        data: [],
+        action: ()=>{}
+      }
+    })
+  }
+
+  checkUser(){
+    this.userS.checkUser()
+        .subscribe(
+          res => {
+            console.log(res);
+          }
+        )
   }
 }

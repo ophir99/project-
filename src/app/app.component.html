@@ -3,6 +3,9 @@
       <mat-form-field>
         <input type="text" matInput (keyup)="search()"  [(ngModel)]="title">
       </mat-form-field>
+
+      <button mat-raised-button (click)="showDialog()">Sign in</button>
+      <button mat-raised-button (click)="checkUser()">CHECK</button>
   </div>
   <div>
     <router-outlet></router-outlet>

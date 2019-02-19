@@ -1,0 +1,72 @@
+
+<table *ngIf="!showSpinner">
+  <tbody [formGroup]="signInForm" *ngIf="!signUpFormToggle">
+    <tr>
+      <td>
+        <mat-form-field>
+          <input type="text" matInput formControlName="email">
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field>
+          <input type="text" matInput formControlName="password">
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button mat-raised-button color="primary" (click)="login()">Login</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button mat-raised-button color="primary" (click)="showSignUpForm()">Sign up</button>
+      </td>
+      <td>
+        <button mat-dialog-close mat-raised-button color="warn">close</button>
+      </td>
+    </tr>
+  </tbody>
+  <tbody [formGroup]="signUpForm" *ngIf="signUpFormToggle">
+    <tr>
+      <td>
+        <mat-form-field>
+          <input type="text" matInput formControlName="email">
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field>
+          <input type="text" matInput formControlName="password">
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field>
+          <input type="text" matInput formControlName="confirmPassword">
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button mat-raised-button color="primary" (click)="register()">Signup</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button mat-raised-button color="primary" (click)="showSignInForm()">SignIn </button>
+      </td>
+      <td>
+        <button mat-dialog-close mat-raised-button color="warn">close</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="showSpinner">
+  <mat-progress-spinner mode="indeterminate" diameter="50"></mat-progress-spinner>
+</div>

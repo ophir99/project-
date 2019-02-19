@@ -8,16 +8,18 @@ import { HomeComponent } from './home/home.component';
 import { ResultsComponent } from './results/results.component';
 import { ArticleComponent } from './article/article.component';
 import { ArticleCardComponent } from './artilce-card/artilce-card.component';
-import { MatInputModule } from "@angular/material";
-import { FormsModule } from "@angular/forms";
+import { MatInputModule, MatButtonModule, MatDialogModule, MatProgressSpinnerModule, MatSnackBarModule } from "@angular/material";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
+import { UserIComponent } from './user-i/user-i.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ResultsComponent,
     ArticleComponent,
-    ArticleCardComponent
+    ArticleCardComponent,
+    UserIComponent
   ],
   imports: [
     BrowserModule,
@@ -25,8 +27,15 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MatInputModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule
   ],
+  entryComponents: [UserIComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
