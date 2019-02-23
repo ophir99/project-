@@ -5,9 +5,25 @@
 <h1>
   {{country}}
 </h1>
-
+<a routerLink="/">home</a>
+<button (click)="logout()">LogOut</button>
 <ul>
   <li *ngFor="let c of content">
     {{c.id}}
   </li>
 </ul>
+
+
+
+<button mat-raised-button (click)="triggerFileUpload(file)">Upload Files</button>
+<input type="file" multiple hidden #file (change)="getFiles($event)">
+
+<ul>
+  <li *ngFor="let img of filesArr">
+    <img src="{{img}}" alt="">
+  </li>
+</ul>
+
+<button mat-raised-button (click)="showImages()">Click</button>
+
+

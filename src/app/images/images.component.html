@@ -1,0 +1,4 @@
+<img [src]="images[i]" alt="">
+
+<button *ngIf="i < images.length-1" (click)="showNext()">Next</button>
+<button *ngIf="i != 0" (click)="showPrev()">Prev</button>

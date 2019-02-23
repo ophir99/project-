@@ -11,6 +11,7 @@ import { UserService } from './user.service';
 })
 export class AppComponent {
   title = 'project-one';
+  toggle;
   constructor(
     private router: Router,
     private matD: MatDialog,
@@ -19,13 +20,16 @@ export class AppComponent {
 
   }
 
+ 
   search(){
     if(this.title.length > 2){
+      this.toggle = true;
       this.router.navigate(['/search'], {queryParams: {
         query: this.title,
         location: "IND"
       }})
     }
+    this.toggle = false;
   }
 
 

@@ -1,11 +1,18 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {MAT_DIALOG_DATA, MatSnackBar, MatDialog} from '@angular/material';
+import {MAT_DIALOG_DATA, MatSnackBar, MatDialogRef} from '@angular/material';
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { UserService } from '../user.service';
+import { AppComponent } from '../app.component';
+import { ResultsComponent } from '../results/results.component';
+export class A{
+  a;
+  b;
+}
 @Component({
   selector: 'app-user-i',
   templateUrl: './user-i.component.html',
-  styleUrls: ['./user-i.component.css']
+  styleUrls: ['./user-i.component.css'],
+  providers: [A]
 })
 export class UserIComponent implements OnInit {
   signInForm: FormGroup;
@@ -18,8 +25,10 @@ export class UserIComponent implements OnInit {
     private fb: FormBuilder,
     private userS: UserService,
     private matS: MatSnackBar,
-    private matD: MatDialog
+    private matD: MatDialogRef<UserIComponent>,
+    private app: A
   ) { 
+    console.log(this.app);
     this.signInForm = this.fb.group({
       email: [],
       password: []
@@ -47,7 +56,10 @@ export class UserIComponent implements OnInit {
     console.log(this.signUpForm.value);
     this.userS.createUser(this.signUpForm.value)
         .subscribe(
-          res => console.log("Res", res),
+          (res:any) => {
+            console.log("Res", res.token);
+            
+        },
           err => {
             this.matS.open("Sorry, try again..", "",  {
               duration: 4000
@@ -72,11 +84,11 @@ export class UserIComponent implements OnInit {
   login(){
     this.userS.logUser(this.signInForm.value)
               .subscribe(
-                (res) => {
+                (res:any) => {
                   console.log(res)
                   this.matS.open("User logged...");
-                  sessionStorage.setItem("myToken", res.token);
-                  this.matD.closeAll();
+                  sessionStorage.setItem("token", res.token);
+                  this.matD.close();
                 }
               )
   }

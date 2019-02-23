@@ -12,7 +12,7 @@ export class UserService {
 
   createUser = (data) => this.httpC.post(`${this.BASE_URL}user/create`, data)
   logUser = (data) => this.httpC.post(`${this.BASE_URL}user/login`, data)
-  checkUser = () => this.httpC.get(`${this.BASE_URL}user/checkuser`, {
+  checkUser = () => this.httpC.get(`${this.BASE_URL}user/checkusers`, {
     headers: new HttpHeaders().append("Authorization", sessionStorage.getItem("myToken"))
   })
 }

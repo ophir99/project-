@@ -1,0 +1,39 @@
+{
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "resources": {
+        "files": [
+          "/favicon.ico",
+          "/index.html",
+          "/*.css",
+          "/*.js"
+        ]
+      }
+    }, {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": [
+          "/assets/**",
+          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
+        ]
+      }
+    }
+  ],
+  "dataGroups":[
+    {
+      "name": "api",
+      "urls":["https://content.guardianapis.com/search?api-key=5c5fbd50-93a5-4da9-82d5-19c951b46360&section=fashion","https://content.guardianapis.com/search?api-key=5c5fbd50-93a5-4da9-82d5-19c951b46360&section=business","https://content.guardianapis.com/search?api-key=5c5fbd50-93a5-4da9-82d5-19c951b46360&section=sport"],
+      "cacheConfig": {
+        "maxSize": 5,
+        "maxAge": "2h",
+        "timeout": "2s",
+        "strategy": "freshness"
+      }
+    }
+  ]
+}

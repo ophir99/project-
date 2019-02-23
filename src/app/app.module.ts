@@ -12,6 +12,10 @@ import { MatInputModule, MatButtonModule, MatDialogModule, MatProgressSpinnerMod
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
 import { UserIComponent } from './user-i/user-i.component';
+import { ResultsactivateComponent } from './resultsactivate/resultsactivate.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { ImagesComponent } from './images/images.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +23,9 @@ import { UserIComponent } from './user-i/user-i.component';
     ResultsComponent,
     ArticleComponent,
     ArticleCardComponent,
-    UserIComponent
+    UserIComponent,
+    ResultsactivateComponent,
+    ImagesComponent
   ],
   imports: [
     BrowserModule,
@@ -33,9 +39,10 @@ import { UserIComponent } from './user-i/user-i.component';
     ReactiveFormsModule,
     HttpClientModule,
     MatProgressSpinnerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  entryComponents: [UserIComponent],
+  entryComponents: [UserIComponent, ImagesComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
